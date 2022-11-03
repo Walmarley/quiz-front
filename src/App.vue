@@ -3,6 +3,15 @@
     <nav>
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
+      <div>
+        <router-link to="/criarUser">Cadastrar usuario</router-link>
+      </div>
+      <div>
+        <router-link to="/criarQuestion">Cadastrar questoes</router-link>
+      </div>
+      <div>
+        <router-link style="background-color:LightGray" to="/quiz">Responder Quiz</router-link>
+      </div>
     </nav>
     <router-view/>
   </div>

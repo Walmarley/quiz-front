@@ -1,6 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import index from '../views/index'
+import login from '../views/login'
+import editar from '../views/editar'
+import criarUser from '../views/criarUser'
+import criarQuestion from '../views/criarQuestion'
+import listarQuestions from '../views/listarQuestions'
+import quiz from '../views/quiz'
 
 Vue.use(VueRouter)
 
@@ -19,7 +26,54 @@ const routes = [
     component: function () {
       return import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
     }
-  }
+  },
+
+  // users
+
+  {
+    path:'/index',
+    name:'index',
+    component:index
+  },
+
+  {
+    path:'/login',
+    name:'login',
+    component:login
+  },
+
+  {
+    path:'/editar/:id',
+    name:'editar',
+    component:editar
+  },
+
+  {
+    path:'/criarUser',
+    name:'criarUser',
+    component:criarUser
+  },
+
+  // Questoes
+
+  {
+    path:'/criarQuestion',
+    name:'criarQuestion',
+    component:criarQuestion
+  },
+  
+  {
+    path:'/listarQuestions',
+    name:'listarQuestions',
+    component:listarQuestions
+  },
+
+  {
+    path:'/quiz',
+    name:'quiz',
+    component:quiz
+  },
+
 ]
 
 const router = new VueRouter({
