@@ -92,6 +92,11 @@
     methods:{
         
         criarQuestion(){
+
+            const config = {
+                headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` }
+            };
+
             var data = {
                 'quest':this.quest,
                 'correctOption':this.correctOption,
@@ -103,7 +108,7 @@
             }
 
             console.log(data)
-            this.$http.post(`questions/store`, data).then((response)=>{
+            this.$http.post(`questions/store`, data, config).then((response)=>{
                 console.log(response)
                 
                 if(response.data.success){

@@ -42,14 +42,26 @@
             console.log(data)
             this.$http.post(`auth/login`, data).then((response)=>{
                 console.log(response)
-                
+
+                const token = response.data.token 
+                // console.log(token)   
+
+                sessionStorage.setItem('token', token);
 
                 if(response.data.success){
                     this.logado = true
 
-                    setTimeout(()=>{
-                        this.$router.push('/index')
-                    },1000)
+                    if(response.data.admin == 1){
+
+                        setTimeout(()=>{
+                            this.$router.push('/homeAdmin')
+                        },1000)
+                        }
+                        else{
+                            setTimeout(()=>{
+                            this.$router.push('/homeUser')
+                        },1000)
+                        }
                 }
             }).catch(e => {
                 console.log(e)

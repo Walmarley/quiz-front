@@ -11,12 +11,20 @@
 
                     <div class="mt-6"> - </div> -->
                 
-                    <div>
+                    <!-- <div>
                         <input class="form-check-input" v-model="admin" type="checkbox" name="flexRadioDefault" id="flexRadioDefault1">
                         <label class="form-check-label" for="flexRadioDefault1">
                              -Admin
                         </label>
-                    </div>
+                    </div> -->
+
+                    <select v-model="admin" class="form-select" aria-label="Default select example" data-style="btn-info">
+                        <option disabled selected>Selecione qual  tipo de User</option>
+                        <option value="0">User Comum</option>
+                        <option value="1">ADMIN</option>
+                    </select>
+
+                    <div class="mt-6"> - </div>
 
                     <!-- <div>
                         <input class="form-check-input" v-model="user" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
@@ -64,26 +72,29 @@
     },
     methods:{
         criarUser(){
+            const config = {
+                headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` }
+            };
+            
             console.log(this.admin)
             if(this.admin != true){
-                this.admin = '1'
-            }else{
                 this.admin = '0'
             }
             
             var data = {
+
                 'admin':this.admin,
                 'name':this.name,
                 'email':this.email,
                 'password':this.password
+
             }
 
             console.log(data)
-            this.$http.post(`users/store`, data).then((response)=>{
-                console.log(response)
-                
+            this.$http.post(`users/store`, data, config).then((response)=>{
+
                 if(response.data.success){
-                    this.logado = true
+                    this.criar = true
 
                     setTimeout(()=>{
                         this.$router.push('/login')

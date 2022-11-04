@@ -49,14 +49,24 @@
     methods: {
 
         getListagem(){
-            this.$http.get('/questions/index').then((response)=>{
+
+            const config = {
+                headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` }
+            };
+
+            this.$http.get('/questions/index', config).then((response)=>{
                 console.log(response)
                 this.listagem = response.data
             })
         },
 
         excluir(id){
-            this.$http.delete(`questions/destroy/${id}`).then((response)=>{
+
+            const config = {
+                headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` }
+            };
+
+            this.$http.delete(`questions/destroy/${id}`, config).then((response)=>{
                 if(response.status == 200){
 
                     window.location.reload();

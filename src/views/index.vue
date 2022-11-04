@@ -44,11 +44,21 @@
             };
         },
     methods: {
+        
 
         getListagem(){
-            this.$http.get('/users/index').then((response)=>{
+            
+            const config = {
+                headers: { 'Authorization': `Bearer ${sessionStorage.getItem('token')}` }
+            };
+            console.log(config)
+
+
+            this.$http.get('/users/index', config).then((response)=>{
                 console.log(response)
                 this.listagem = response.data
+            }).catch(e => {
+                console.log(e)
             })
         },
 

@@ -8,6 +8,10 @@ import criarUser from '../views/criarUser'
 import criarQuestion from '../views/criarQuestion'
 import listarQuestions from '../views/listarQuestions'
 import quiz from '../views/quiz'
+import homeAdmin from '../views/homeAdmin'
+import homeUser from '../views/homeUser'
+import desloga from '../views/desloga'
+
 
 Vue.use(VueRouter)
 
@@ -69,9 +73,27 @@ const routes = [
   },
 
   {
+    path:'/homeUser',
+    name:'homeUser',
+    component:homeUser
+  },
+
+  {
+    path:'/homeAdmin',
+    name:'homeAdmin',
+    component:homeAdmin
+  },
+
+  {
     path:'/quiz',
     name:'quiz',
     component:quiz
+  },
+
+  {
+    path:'/desloga',
+    name:'desloga',
+    component:desloga
   },
 
 ]
